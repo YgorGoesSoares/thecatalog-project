@@ -1,5 +1,6 @@
 package com.project.dscatalog.DSCatalog.entities;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,13 +10,18 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "tb_category")
 public class Category implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
 
 
     public Category() {
