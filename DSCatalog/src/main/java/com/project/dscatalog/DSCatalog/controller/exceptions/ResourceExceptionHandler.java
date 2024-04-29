@@ -1,4 +1,4 @@
-package com.project.dscatalog.DSCatalog.resources.exceptions;
+package com.project.dscatalog.DSCatalog.controller.exceptions;
 
 import com.project.dscatalog.DSCatalog.services.exceptions.DatabaseException;
 import com.project.dscatalog.DSCatalog.services.exceptions.ResourceNotFoundException;

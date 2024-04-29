@@ -11,6 +11,7 @@ import com.project.dscatalog.DSCatalog.services.exceptions.ResourceNotFoundExcep
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -65,16 +66,14 @@ public class ProductService {
     }
 
     public void deleteProduct(Long id) {
-        Optional<Product> optionalProduct = repository.findById(id);
-        if (!optionalProduct.isPresent()) {
-            throw new ResourceNotFoundException("Id not found (" + id + ")");
-        }
-
         try {
             repository.deleteById(id);
         }
         catch (DataIntegrityViolationException e) {
             throw new DatabaseException("Integrity violation");
+        }
+        catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Id not found (" + id +")");
         }
     }
 

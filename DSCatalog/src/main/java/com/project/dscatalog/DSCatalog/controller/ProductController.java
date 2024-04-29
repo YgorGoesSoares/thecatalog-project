@@ -1,12 +1,10 @@
-package com.project.dscatalog.DSCatalog.resources;
+package com.project.dscatalog.DSCatalog.controller;
 
 import com.project.dscatalog.DSCatalog.dto.ProductDTO;
 import com.project.dscatalog.DSCatalog.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -15,7 +13,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/products")
-public class ProductResource {
+public class ProductController {
 
     @Autowired
     private ProductService service;

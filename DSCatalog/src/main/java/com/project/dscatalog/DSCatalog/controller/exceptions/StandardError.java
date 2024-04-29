@@ -1,4 +1,4 @@
-package com.project.dscatalog.DSCatalog.resources.exceptions;
+package com.project.dscatalog.DSCatalog.controller.exceptions;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
