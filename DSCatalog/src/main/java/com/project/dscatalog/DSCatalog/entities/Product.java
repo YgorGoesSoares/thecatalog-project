@@ -3,6 +3,7 @@ package com.project.dscatalog.DSCatalog.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_product")
 public class Product implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Getter
