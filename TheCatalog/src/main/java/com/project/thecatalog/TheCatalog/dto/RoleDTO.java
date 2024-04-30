@@ -1,6 +1,7 @@
 package com.project.thecatalog.TheCatalog.dto;
 
 import com.project.thecatalog.TheCatalog.entities.Role;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import java.io.Serial;

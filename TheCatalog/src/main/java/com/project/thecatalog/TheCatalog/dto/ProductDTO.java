@@ -2,6 +2,7 @@ package com.project.thecatalog.TheCatalog.dto;
 
 import com.project.thecatalog.TheCatalog.entities.Category;
 import com.project.thecatalog.TheCatalog.entities.Product;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.io.Serial;
@@ -21,10 +22,19 @@ public class ProductDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @NotBlank(message = "Field mandatory.")
+    @Size(min = 5, max = 50, message = "It must be between 5 and 50 characters.")
     private String name;
+
+    @NotBlank(message = "Field mandatory.")
     private String description;
+
+    @Positive(message = "Price should be a positive value.")
     private Double price;
     private String imgUrl;
+
+    @PastOrPresent(message = "Date couldn't be future.")
     private Instant date;
     private List<CategoryDTO> categories = new ArrayList<>();
 

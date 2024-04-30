@@ -64,6 +64,8 @@ public class UserService {
         return new UserDTO(entity);}
         catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found " + id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Integrity violation: " + e.getCause());
         }
 
     }

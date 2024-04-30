@@ -1,6 +1,8 @@
 package com.project.thecatalog.TheCatalog.dto;
 
 import com.project.thecatalog.TheCatalog.entities.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.io.Serial;
@@ -19,8 +21,10 @@ public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+    @NotBlank(message = "Field mandatory.")
     private String firstName;
     private String lastName;
+    @Email(message = "Please insert a valid email address.")
     private String email;
 
     @Getter
