@@ -3,6 +3,7 @@ package com.project.thecatalog.TheCatalog.controller.exceptions;
 import com.project.thecatalog.TheCatalog.services.exceptions.DatabaseException;
 import com.project.thecatalog.TheCatalog.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -49,10 +50,22 @@ public class ResourceExceptionHandler {
         err.setMessage(error.getMessage());
         err.setPath(request.getRequestURI());
 
-        for (FieldError fieldError : error.getFieldErrors()) {
+        for (FieldError fieldError : error.getBindingResult().getFieldErrors()) {
             err.addError(fieldError.getField(), fieldError.getDefaultMessage());
         }
-        
+
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> dataNotValid(DataIntegrityViolationException error, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
+        StandardError err = new StandardError();
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Validation exception");
+        err.setMessage(error.getMessage());
+        err.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(err);
     }
 

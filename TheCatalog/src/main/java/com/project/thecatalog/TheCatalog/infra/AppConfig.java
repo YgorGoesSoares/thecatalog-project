@@ -1,4 +1,4 @@
-package com.project.thecatalog.TheCatalog.config;
+package com.project.thecatalog.TheCatalog.infra;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -2,12 +2,18 @@ package com.project.thecatalog.TheCatalog.controller;
 
 import com.project.thecatalog.TheCatalog.dto.UserDTO;
 import com.project.thecatalog.TheCatalog.dto.UserInsertDTO;
+import com.project.thecatalog.TheCatalog.entities.User;
+import com.project.thecatalog.TheCatalog.entities.authentication.UserAuthenticationData;
+import com.project.thecatalog.TheCatalog.infra.security.TokenJWTData;
 import com.project.thecatalog.TheCatalog.services.UserService;
+import com.project.thecatalog.TheCatalog.services.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -17,6 +23,11 @@ import java.net.URI;
 @RequestMapping(value = "/users")
 public class UserController {
 
+
+    @Autowired
+    private AuthenticationManager manager;
+    @Autowired
+    private TokenService tokenService;
     @Autowired
     private UserService service;
     @GetMapping
@@ -49,4 +60,6 @@ public class UserController {
         service.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }
