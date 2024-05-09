@@ -2,6 +2,7 @@ package com.project.thecatalog.TheCatalog.controller;
 
 import com.project.thecatalog.TheCatalog.dto.ProductDTO;
 import com.project.thecatalog.TheCatalog.services.ProductService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +31,8 @@ public class ProductController {
         return ResponseEntity.ok().body(dto);
     }
 
+
+    @SecurityRequirement(name = "bearer-key")
     @PostMapping
     public ResponseEntity<ProductDTO> insertNewProduct(@Valid @RequestBody ProductDTO dto) {
         dto = service.insertNewProduct(dto);
@@ -37,12 +40,16 @@ public class ProductController {
         return ResponseEntity.created(uri).body(dto);
     }
 
+
+    @SecurityRequirement(name = "bearer-key")
     @PutMapping(value = "/{id}")
     public ResponseEntity<ProductDTO> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductDTO dto) {
     dto = service.updateProduct(id, dto);
     return ResponseEntity.ok().body(dto);
     }
 
+
+    @SecurityRequirement(name = "bearer-key")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<ProductDTO> deleteProduct(@PathVariable Long id) {
         service.deleteProduct(id);
