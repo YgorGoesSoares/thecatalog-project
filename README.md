@@ -11,11 +11,11 @@ Este projeto é um back-end de um marketplace que gerencia produtos e suas categ
 ## Requisitos de Acesso
 
 - **Público**:
-    - Criar novos usuários (`POST /users`).
     - Realizar login (`POST /signin`).
     - Acessar a documentação de API (`/v3/api-docs/**`, `/swagger-ui.html`, `/swagger-ui/**`).
     - Visualizar produtos (`GET /products/**`).
 - **Administradores** (`ROLE_ADMIN`):
+    - Criar novos usuários (`POST /users`).
     - Gerenciar usuários (`/users/**`).
     - Gerenciar categorias (`/categories/**`).
     - Gerenciar produtos (`/products/**`).
@@ -33,6 +33,32 @@ Este projeto é um back-end de um marketplace que gerencia produtos e suas categ
 ## Documentação
 
 - A documentação do projeto está disponível em: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
+
+
+## Como Configurar e Executar o Projeto
+
+Siga as instruções abaixo para configurar e executar o projeto localmente:
+
+1. Clone o repositório do projeto:
+
+    ```shell
+    git clone https://github.com/YgorGoesSoares/thecatalog-project
+    ```
+
+2. Navegue até o diretório do projeto:
+
+    ```shell
+    cd thecatalog-project
+    ```
+
+3. Compile e execute o projeto usando Maven:
+
+    ```shell
+    mvn spring-boot:run
+    ```
+
+4. A aplicação estará em execução em `http://localhost:8080`.
+A documentação ficará disponível em `http://localhost:8080/swagger-ui/index.html`.
 
 ## Usuários de Teste
 
